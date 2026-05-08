@@ -46,7 +46,7 @@
 <body>
 
     {{-- Admission Alert Bar --}}
-    <div class="admit-bar">
+    <!-- <div class="admit-bar">
         <div class="container admit-bar-inner">
             <span class="pulse-dot"></span>
             <span><strong>Admissions Open</strong> for 2025/2026 Academic Session</span>
@@ -55,7 +55,7 @@
         <button class="admit-bar-close" aria-label="Close alert">
             <i class="fa-solid fa-xmark"></i>
         </button>
-    </div>
+    </div> -->
 
     @if(!View::hasSection('hide-navbar'))
     {{-- Navbar --}}
@@ -233,7 +233,7 @@
             </div>
         </div>
         <div class="container footer-bottom">
-            <span>&copy; {{ date('Y') }} Royal Ark Schools. All rights reserved.</span>
+            <span style="text-align:center;">&copy; {{ date('Y') }} <a href="https://ras.com" target="_blank" style="color: var(--amber);">Royal Ark Schools</a>. Developed by <a href="https://intellicsolutions.org" target="_blank" style="color: var(--amber);">Intellic Solutions</a>. All rights reserved.</span>
             <div class="footer-bottom-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Use</a>

@@ -1737,7 +1737,7 @@ select.form-control { cursor: pointer; }
   .page-hero { min-height: 220px; }
   .page-hero h1 { font-size: 2rem; }
   .admission-status-block { padding: 24px 20px; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-bottom { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
 }
 
 @media (max-width: 480px) {
