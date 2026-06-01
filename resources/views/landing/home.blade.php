@@ -92,14 +92,14 @@
                 <div class="section-label">About Royal Ark Schools</div>
                 <h2 class="section-title">A Legacy of Academic <em>Royalty</em></h2>
                 <p style="font-family:var(--font-body);font-size:var(--text-base);color:var(--text-mid);line-height:1.8;margin-bottom:16px;">
-                    Royal Ark College is a dynamic citadel of learning dedicated to raising exceptional learners through quality education and strong moral values. 
-                </p>
-                <p style="font-family:var(--font-body);font-size:var(--text-base);color:var(--text-mid);line-height:1.8;margin-bottom:16px;">
-                    We provide a nurturing and inspiring environment where pupils and students are empowered to discover their potential, develop critical thinking skills, and grow into confident, responsible, and globally relevant leaders. 
-                </p>
-                <p style="font-family:var(--font-body);font-size:var(--text-base);color:var(--text-mid);line-height:1.8;margin-bottom:20px;">
-                    With a commitment to academic excellence, character building, and innovation, Royal Ark College continues to shape young minds for lifelong success and meaningful contribution to society. 
-                </p>
+            At Royal Ark Schools, excellence is not just a tradition — it is our identity. For years, we have remained committed to raising confident, intelligent, disciplined, and purpose-driven learners who stand out academically and morally.
+        </p>
+        <p style="font-family:var(--font-body);font-size:var(--text-base);color:var(--text-mid);line-height:1.8;margin-bottom:16px;">
+            Our legacy is built on a strong foundation of quality education, dedicated teachers, innovative learning methods, full practical science exposure, and a nurturing environment where every child is inspired to discover and maximize their potential.
+        </p>
+        <p style="font-family:var(--font-body);font-size:var(--text-base);color:var(--text-mid);line-height:1.8;margin-bottom:20px;">
+            We believe every child is born for greatness. Through academic excellence, character development, leadership training, and modern educational standards, we prepare our students not only for examinations, but for life, leadership, and global relevance.
+        </p>
                 <div class="about-features">
                     <span class="about-pill">&#10003; Accredited</span>
                     <span class="about-pill">&#10003; Experienced Teachers</span>
@@ -181,44 +181,64 @@
     </div>
 </section>
 
-{{-- ====== WHY CHOOSE ====== --}}
+{{-- ====== WHAT WE OFFER ====== --}}
 <section class="section-pad why-section" id="why">
     <div class="container">
         <div class="section-label center">Why Us?</div>
-        <h2 class="section-title center">The Royal Ark <em>Difference</em></h2>
+        <h2 class="section-title center">The Royal Ark <em>Advantage</em></h2>
         <p class="section-subtitle center" style="margin-bottom:40px;">
-            Six pillars that set our school apart from the rest.
+            A well-rounded educational experience designed to nurture excellence in every child.
         </p>
-        <div class="why-grid">
+        <div class="why-grid" style="grid-template-columns: repeat(5, 1fr);">
             <div class="feature-card reveal reveal-delay-1">
-                <span class="feature-card-icon">&#128081;</span>
+                <span class="feature-card-icon">&#128218;</span>
                 <div class="feature-card-title">Academic Excellence</div>
-                <p class="feature-card-desc">Consistent top results in WAEC/NECO examinations with a culture of merit and continuous improvement.</p>
+                <p class="feature-card-desc">A strong and structured curriculum that promotes outstanding performance and lifelong learning.</p>
             </div>
             <div class="feature-card reveal reveal-delay-2">
-                <span class="feature-card-icon">&#127963;&#65039;</span>
-                <div class="feature-card-title">Modern Facilities</div>
-                <p class="feature-card-desc">Well-equipped science laboratories, library, ICT centre, and sports facilities for holistic learning.</p>
+                <span class="feature-card-icon">&#128104;&#8205;&#127979;</span>
+                <div class="feature-card-title">Qualified Teachers</div>
+                <p class="feature-card-desc">Dedicated educators committed to personalized learning and student success.</p>
             </div>
             <div class="feature-card reveal reveal-delay-3">
-                <span class="feature-card-icon">&#128104;&#8205;&#127979;</span>
-                <div class="feature-card-title">Experienced Faculty</div>
-                <p class="feature-card-desc">Qualified, dedicated teachers at every level who mentor students beyond the classroom.</p>
+                <span class="feature-card-icon">&#128300;</span>
+                <div class="feature-card-title">Science Practicals</div>
+                <p class="feature-card-desc">Hands-on laboratory experiences that enhance understanding, innovation, and scientific discovery.</p>
             </div>
             <div class="feature-card reveal reveal-delay-4">
-                <span class="feature-card-icon">&#9917;</span>
-                <div class="feature-card-title">Holistic Development</div>
-                <p class="feature-card-desc">Sports, arts, clubs and extra-curricular activities that build teamwork, creativity, and leadership.</p>
+                <span class="feature-card-icon">&#9889;</span>
+                <div class="feature-card-title">Moral Development</div>
+                <p class="feature-card-desc">We instil discipline, integrity, leadership, and strong moral values in every learner.</p>
             </div>
             <div class="feature-card reveal reveal-delay-5">
-                <span class="feature-card-icon">&#128274;</span>
-                <div class="feature-card-title">Safe Environment</div>
-                <p class="feature-card-desc">Secure campus with CCTV surveillance, controlled access, and a comprehensive pastoral care system.</p>
+                <span class="feature-card-icon">&#127963;</span>
+                <div class="feature-card-title">Modern Environment</div>
+                <p class="feature-card-desc">Safe, stimulating, and technology-friendly classrooms designed for effective learning.</p>
             </div>
             <div class="feature-card reveal reveal-delay-1">
-                <span class="feature-card-icon">&#127759;</span>
-                <div class="feature-card-title">Values-Based Education</div>
-                <p class="feature-card-desc">Character formation alongside academic growth, producing students who lead with integrity.</p>
+                <span class="feature-card-icon">&#128081;</span>
+                <div class="feature-card-title">Leadership Training</div>
+                <p class="feature-card-desc">Activities and programs that help students develop communication, creativity, and leadership skills.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <span class="feature-card-icon">&#9917;</span>
+                <div class="feature-card-title">Extracurriculars</div>
+                <p class="feature-card-desc">Sports, arts, music, debates, clubs, and other engaging activities that promote all-round development.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-3">
+                <span class="feature-card-icon">&#128100;</span>
+                <div class="feature-card-title">Individual Attention</div>
+                <p class="feature-card-desc">We recognize the uniqueness of every child and provide support tailored to their learning needs.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-4">
+                <span class="feature-card-icon">&#128106;</span>
+                <div class="feature-card-title">Parental Partnership</div>
+                <p class="feature-card-desc">Strong collaboration with parents to ensure continuous academic and personal growth.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-5">
+                <span class="feature-card-icon">&#127758;</span>
+                <div class="feature-card-title">Future-Focused</div>
+                <p class="feature-card-desc">Preparing students to excel academically and compete confidently in a global world.</p>
             </div>
         </div>
     </div>
