@@ -162,7 +162,7 @@
   padding: 8px 16px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: var(--white);
+  /* background: var(--white); */
 }
 
 @media (max-width: 1024px) {
@@ -196,44 +196,97 @@
   </div>
 </section>
 
-{{-- Mission / Vision / Values --}}
+{{-- Mission / Vision --}}
 <section class="section-pad">
+    <div class="container">
+        <div class="text-center" style="margin-bottom:48px;">
+            <div class="section-label center">Our Foundation</div>
+            <h2 class="section-title center">Mission &amp; Vision</h2>
+        </div>
+        <div class="mvv-grid">
+            <div class="mvv-card reveal">
+                <span class="mvv-icon">🎯</span>
+                <h3 class="mvv-title">Our Mission</h3>
+                <p class="mvv-body">
+                    At Royal Ark Schools, our mission is to provide a nurturing environment of excellence where every child is firmly grounded in academic distinction, moral integrity, and Kingdom values. We achieve this by delivering a well-rounded global curriculum, fostering innovative, inquiry-based, and child-centred learning, upholding discipline rooted in respect and godly values, and creating a safe, supportive, and inclusive environment where every learner is valued.
+                </p>
+            </div>
+            <div class="mvv-card featured reveal reveal-delay-1">
+                <span class="mvv-icon">🌟</span>
+                <h3 class="mvv-title">Our Vision</h3>
+                <p class="mvv-body">
+                    To be a beacon of moral and academic excellence that nurtures every child into a well-rounded global citizen.
+                </p>
+            </div>
+            <div class="mvv-card reveal reveal-delay-2">
+                <span class="mvv-icon">👑</span>
+                <h3 class="mvv-title">Our Purpose</h3>
+                <p class="mvv-body">
+                    We are committed to raising balanced leaders by cultivating curiosity, resilience, creativity, and responsibility, preparing each child to thrive as a confident and well-rounded global citizen.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- Core Values --}}
+<section class="section-pad" style="background:var(--cream);">
   <div class="container">
     <div class="text-center" style="margin-bottom:48px;">
-      <div class="section-label center">Our Foundation</div>
-      <h2 class="section-title center">Mission, Vision &amp; Values</h2>
+      <div class="section-label center">Our Guiding Principles</div>
+      <h2 class="section-title center">Core Values</h2>
     </div>
-    <div class="mvv-grid">
-      <div class="mvv-card reveal">
-        <span class="mvv-icon">🎯</span>
-        <h3 class="mvv-title">Our Mission</h3>
-        <p class="mvv-body">To provide a holistic education that nurtures every child's intellectual, moral, social, and physical development within a values-driven environment.</p>
+    <div class="facility-grid">
+      <div class="facility-card reveal">
+        <div class="facility-icon">🎯</div>
+        <h3 class="facility-title">Excellence</h3>
+        <p class="facility-desc">At Royal Ark Schools, we are committed to the pursuit of excellence in every aspect of learning and character development. We encourage our students and staff to strive for the highest standards academically, morally, and socially.</p>
       </div>
-      <div class="mvv-card featured reveal reveal-delay-1">
-        <span class="mvv-icon">🌟</span>
-        <h3 class="mvv-title">Our Vision</h3>
-        <p class="mvv-body">To be a leading institution recognised for producing confident, ethical, and innovative leaders who transform their communities and the world.</p>
+      <div class="facility-card reveal reveal-delay-1">
+        <div class="facility-icon">⚖️</div>
+        <h3 class="facility-title">Integrity</h3>
+        <p class="facility-desc">We uphold honesty, transparency, and strong moral principles in all that we do. We teach our students to always do what is right, even when no one is watching.</p>
       </div>
-      <div class="mvv-card reveal reveal-delay-2">
-        <span class="mvv-icon">👑</span>
-        <h3 class="mvv-title">Our Values</h3>
-        <p class="mvv-body">Excellence · Integrity · Respect · Discipline · Compassion · Innovation · Responsibility</p>
+      <div class="facility-card reveal reveal-delay-2">
+        <div class="facility-icon">📏</div>
+        <h3 class="facility-title">Discipline</h3>
+        <p class="facility-desc">Discipline is essential for personal growth and success. At Royal Ark Schools, we cultivate self-control, responsibility, punctuality, and respect for rules and authority.</p>
+      </div>
+      <div class="facility-card reveal reveal-delay-3">
+        <div class="facility-icon">💡</div>
+        <h3 class="facility-title">Innovation</h3>
+        <p class="facility-desc">We embrace creativity, critical thinking, and modern approaches to education. Royal Ark Schools equips students with the ability to think independently, solve problems effectively, and adapt to a rapidly changing world.</p>
+      </div>
+      <div class="facility-card reveal reveal-delay-4">
+        <div class="facility-icon">🙏</div>
+        <h3 class="facility-title">Godliness</h3>
+        <p class="facility-desc">We believe that true education is rooted in sound moral and spiritual values. Royal Ark Schools promotes the fear of God, righteous living, compassion, and respect for others.</p>
+      </div>
+      <div class="facility-card reveal reveal-delay-5">
+        <div class="facility-icon">👑</div>
+        <h3 class="facility-title">Leadership</h3>
+        <p class="facility-desc">We are passionate about raising future leaders who are confident, responsible, and visionary. Through academic excellence, mentorship, and character building, we empower our students to influence their world positively.</p>
+      </div>
+      <div class="facility-card reveal reveal-delay-6">
+        <div class="facility-icon">🤝</div>
+        <h3 class="facility-title">Service</h3>
+        <p class="facility-desc">We instil in our students the value of serving others with humility, kindness, and commitment. Royal Ark Schools teaches that true greatness is found in making meaningful contributions to family, community, and society.</p>
       </div>
     </div>
   </div>
 </section>
 
-{{-- Our Story / Timeline --}}
+{{-- Our Story --}}
 <section class="section-pad" style="background:var(--cream);">
   <div class="container">
     <div class="grid-2" style="align-items:start; gap:64px;">
       <div class="reveal">
         <div class="section-label">Our Journey</div>
         <h2 class="section-title">Our Story</h2>
-        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">Royal Ark College and Royal Ark Nursery & Primary School was established with a clear vision of becoming a beacon of moral and academic excellence, dedicated to nurturing every child into a well-rounded global citizen. From its inception, the school has remained committed to providing a solid educational foundation that combines sound academic training with strong moral values.</p>
-        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">Built on the belief that true education goes beyond classroom instruction, Royal Ark College and Royal Ark Nursery & Primary School was founded to raise learners who are intellectually sound, morally upright, socially responsible, and fully equipped to excel in a dynamic global society. Through a child-centered approach to learning, the school focuses on developing excellence, leadership, creativity, discipline, and confidence in every pupil and student.</p>
-        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">The school has continued to grow as a center of learning where academic distinction and character formation go hand in hand. With a team of dedicated educators and a conducive learning environment, Royal Ark College and Royal Ark Nursery & Primary School consistently nurtures young minds to become future leaders capable of making meaningful impact both locally and globally.</p>
-        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">Today, the school stands as a symbol of its founding vision—shaping well-rounded individuals prepared for excellence in life, leadership, and service to humanity.</p>
+        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">At Royal Ark Schools, excellence is not just a tradition — it is our identity. For years, we have remained committed to raising confident, intelligent, disciplined, and purpose-driven learners who stand out academically and morally.</p>
+        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">Our legacy is built on a strong foundation of quality education, dedicated teachers, innovative learning methods, full practical science exposure, and a nurturing environment where every child is inspired to discover and maximize their potential.</p>
+        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">We believe every child is born for greatness. Through academic excellence, character development, leadership training, and modern educational standards, we prepare our students not only for examinations, but for life, leadership, and global relevance.</p>
+        <p class="section-subtitle" style="max-width:none; margin-bottom: 20px;">At Royal Ark Schools, we do not just educate children — we raise future kings, queens, leaders, and achievers.</p>
       </div>
       <!-- <div class="timeline reveal reveal-delay-1">
         <div class="timeline-item">
@@ -318,7 +371,7 @@
   </div>
 </section>
 
-{{-- Leadership Team --}}
+{{-- Meet Our Team --}}
 <section class="section-pad" style="background:var(--cream);">
   <div class="container">
     <div class="text-center" style="margin-bottom:48px;">
@@ -416,10 +469,10 @@
       <h2 class="section-title center">Accreditations &amp; Affiliations</h2>
     </div>
     <div class="logo-bar reveal">
-      <span class="logo-bar-item">Ministry of Education</span>
-      <span class="logo-bar-item">WAEC</span>
-      <span class="logo-bar-item">NECO</span>
-      <span class="logo-bar-item">Lagos State Government</span>
+      <span class="logo-bar-item"><img src="{{ asset('landing/img/gallery/mini.jpg') }}" alt="MD"></span>
+      <span class="logo-bar-item"><img src="{{ asset('landing/img/gallery/waec.jpg') }}" alt="Waec"></span>
+      <span class="logo-bar-item"><img src="{{ asset('landing/img/gallery/neco.jpg') }}" alt="Neco"></span>
+      <span class="logo-bar-item"><img src="{{ asset('landing/img/gallery/lagos.jpg') }}" alt="Lagos State Government"></span>
     </div>
   </div>
 </section>
