@@ -10,12 +10,45 @@
 
 @section('content')
 
-{{-- ====== HERO ====== --}}
-<section class="hero" id="home">
+{{-- ====== HERO CAROUSEL ====== --}}
+<section class="hero hero-carousel" id="home" aria-label="Hero image carousel">
+
+    {{-- ── Carousel Slides (images cycle here) ── --}}
+    <div class="hero-slides" aria-live="off">
+        <div class="hero-slide active" data-index="0">
+            <img
+                src="{{ asset('landing/img/hero/ras-school.jpg') }}"
+                alt="Royal Ark Schools campus front view"
+                class="hero-slide-img"
+                fetchpriority="high"
+            >
+        </div>
+        <div class="hero-slide" data-index="1">
+            <img
+                src="{{ asset('landing/img/hero/basic-science-lab.jpg') }}"
+                alt="Royal Ark Schools science laboratory"
+                class="hero-slide-img"
+            >
+        </div>
+        <div class="hero-slide" data-index="2">
+            <img
+                src="{{ asset('landing/img/hero/staff-room-1.jpg') }}"
+                alt="Royal Ark Schools staff room"
+                class="hero-slide-img"
+            >
+        </div>
+    </div>
+
+    {{-- ── Overlay layers ── --}}
+    <div class="hero-overlay-base"></div>
+    <div class="hero-overlay-vignette"></div>
+
+    {{-- ── Fallback orbs (show if images fail) ── --}}
     <div class="hero-orb orb-1"></div>
     <div class="hero-orb orb-2"></div>
     <div class="hero-orb orb-3"></div>
 
+    {{-- ── Main content ── --}}
     <div class="hero-content">
         <div class="hero-badge">
             <span class="dot"></span>
@@ -33,6 +66,26 @@
             <a href="{{ route('apply') }}" class="btn btn-primary btn-lg">Apply Now</a>
             <a href="{{ route('academics') }}" class="btn btn-outline-white btn-lg">Explore Our Programs</a>
         </div>
+    </div>
+
+    {{-- ── Carousel controls ── --}}
+    <button class="hero-carousel-btn hero-carousel-prev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="hero-carousel-btn hero-carousel-next" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+
+    {{-- ── Dot indicators ── --}}
+    <div class="hero-carousel-dots" role="tablist" aria-label="Carousel slide indicators">
+        <button class="hero-dot active" role="tab" aria-selected="true"  aria-label="Slide 1" data-slide="0"></button>
+        <button class="hero-dot"        role="tab" aria-selected="false" aria-label="Slide 2" data-slide="1"></button>
+        <button class="hero-dot"        role="tab" aria-selected="false" aria-label="Slide 3" data-slide="2"></button>
+    </div>
+
+    {{-- ── Progress bar ── --}}
+    <div class="hero-progress" aria-hidden="true">
+        <div class="hero-progress-bar" id="heroProgressBar"></div>
     </div>
 
     <a href="#stats" class="hero-scroll" aria-label="Scroll down">
@@ -189,7 +242,7 @@
         <p class="section-subtitle center" style="margin-bottom:40px;">
             A well-rounded educational experience designed to nurture excellence in every child.
         </p>
-        <div class="why-grid" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="why-grid">
             <div class="feature-card reveal reveal-delay-1">
                 <span class="feature-card-icon">&#128218;</span>
                 <div class="feature-card-title">Academic Excellence</div>
@@ -464,6 +517,129 @@
 </div>
 
 @push('scripts')
+<script>
+/* ── Hero Carousel ── */
+(function () {
+  'use strict';
+
+  const INTERVAL   = 6000;   // ms between auto-advance
+  const TRANSITION = 1100;   // ms for cross-fade
+
+  const slides   = Array.from(document.querySelectorAll('.hero-slide'));
+  const dots     = Array.from(document.querySelectorAll('.hero-dot'));
+  const prevBtn  = document.querySelector('.hero-carousel-prev');
+  const nextBtn  = document.querySelector('.hero-carousel-next');
+  const bar      = document.getElementById('heroProgressBar');
+
+  if (!slides.length) return;
+
+  let current = 0;
+  let timer   = null;
+  let paused  = false;
+
+  /* Force-restart the Ken Burns animation on the incoming slide's image */
+  function restartKenBurns(slide) {
+    const img = slide.querySelector('.hero-slide-img');
+    if (!img) return;
+    img.style.animation = 'none';
+    void img.offsetWidth; // reflow
+    img.style.animation = '';
+  }
+
+  function goTo(index) {
+    const from = current;
+    current = ((index % slides.length) + slides.length) % slides.length;
+    if (from === current) return;
+
+    /* outgoing: start fade-out */
+    slides[from].classList.remove('active');
+    slides[from].classList.add('leaving');
+    setTimeout(() => slides[from].classList.remove('leaving'), TRANSITION);
+
+    /* incoming: activate + restart Ken Burns */
+    slides[current].classList.add('active');
+    restartKenBurns(slides[current]);
+
+    /* sync dots */
+    dots.forEach((d, i) => {
+      const on = i === current;
+      d.classList.toggle('active', on);
+      d.setAttribute('aria-selected', String(on));
+    });
+
+    resetBar();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(next, INTERVAL);
+  }
+
+  function resetBar() {
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    void bar.offsetWidth; // reflow so width:0 is painted before transition starts
+    bar.style.transition = `width ${INTERVAL}ms linear`;
+    bar.style.width = '100%';
+  }
+
+  /* Kick off — use requestAnimationFrame to ensure layout is ready on first load */
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      restartKenBurns(slides[0]); // ensure first slide's Ken Burns fires cleanly
+      startAuto();
+      resetBar();
+    });
+  });
+
+  /* Controls */
+  nextBtn?.addEventListener('click', () => { next(); startAuto(); });
+  prevBtn?.addEventListener('click', () => { prev(); startAuto(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goTo(parseInt(dot.dataset.slide, 10));
+      startAuto();
+    });
+  });
+
+  /* Pause on hover */
+  const hero = document.querySelector('.hero-carousel');
+  hero?.addEventListener('mouseenter', () => {
+    paused = true;
+    clearInterval(timer);
+    if (bar) { bar.style.transition = 'none'; }
+  });
+  hero?.addEventListener('mouseleave', () => {
+    if (!paused) return;
+    paused = false;
+    startAuto();
+    resetBar();
+  });
+
+  /* Keyboard (left/right arrows while hovering hero) */
+  document.addEventListener('keydown', e => {
+    if (!document.querySelector('.hero-carousel:hover')) return;
+    if (e.key === 'ArrowLeft')  { prev(); startAuto(); }
+    if (e.key === 'ArrowRight') { next(); startAuto(); }
+  });
+
+  /* Touch swipe */
+  let touchStartX = 0;
+  hero?.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  hero?.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); startAuto(); }
+  }, { passive: true });
+
+})();
+</script>
 <script>
 (function() {
   'use strict';
