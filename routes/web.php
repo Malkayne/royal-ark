@@ -53,3 +53,7 @@ Route::get('/apply', function () {
     return view('landing.apply');
 })->name('apply');
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
