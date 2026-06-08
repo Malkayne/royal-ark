@@ -26,6 +26,35 @@
 </div>
 
 <!-- ══════════════════════════════════════════════════════
+     SESSION TOASTS
+══════════════════════════════════════════════════════════ -->
+@php
+  $sessionToasts = collect([
+    ['message' => session('success'), 'type' => 'success'],
+    ['message' => session('error'), 'type' => 'danger'],
+    ['message' => session('warning'), 'type' => 'warning'],
+    ['message' => session('info'), 'type' => 'info'],
+    ['message' => (session()->has('success') || session()->has('error') || session()->has('warning') || session()->has('info')) ? null : session('status'), 'type' => 'info'],
+  ])->filter(fn ($toast) => filled($toast['message']))->values();
+@endphp
+
+@if($sessionToasts->isNotEmpty())
+<script>
+  window.sessionToasts = @json($sessionToasts);
+  document.addEventListener('DOMContentLoaded', function() {
+    window.setTimeout(function() {
+      if (window.Toast) {
+        window.Toast.init();
+        window.sessionToasts.forEach(function(toast) {
+          window.Toast.show(toast.message, toast.type);
+        });
+      }
+    }, 0);
+  });
+</script>
+@endif
+
+<!-- ══════════════════════════════════════════════════════
      SHELL
 ══════════════════════════════════════════════════════════ -->
 <div class="admin-shell" id="adminShell">
@@ -34,7 +63,7 @@
   <aside class="admin-sidebar" id="adminSidebar">
 
     <!-- Logo -->
-    <a href="dashboard.html" class="sidebar-header">
+    <a href="{{ route('admin.dashboard') }}" class="sidebar-header">
       <div class="sidebar-crest">RA</div>
       <div class="sidebar-brand-text">
         <span class="sidebar-brand-name">Royal Ark College</span>
@@ -47,7 +76,7 @@
 
       <!-- Overview -->
       <div class="sidebar-section">Overview</div>
-      <a href="dashboard.html" class="nav-item active">
+      <a href="{{ route('admin.dashboard') }}" class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-chart-pie"></i></span>
         <span class="nav-item-text">Dashboard</span>
         <span class="nav-tooltip">Dashboard</span>
@@ -55,13 +84,13 @@
 
       <!-- School Management -->
       <div class="sidebar-section">School Management</div>
-      <a href="admissions/index.html" class="nav-item">
+      <a href="{{ route('admin.admissions.index') }}" class="nav-item {{ request()->routeIs('admin.admissions.*') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-folder-open"></i></span>
         <span class="nav-item-text">Admissions</span>
         <span class="nav-badge">14</span>
         <span class="nav-tooltip">Admissions</span>
       </a>
-      <a href="enquiries/index.html" class="nav-item">
+      <a href="{{ route('admin.enquiries.index') }}" class="nav-item {{ request()->routeIs('admin.enquiries.*') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-comments"></i></span>
         <span class="nav-item-text">Enquiries</span>
         <span class="nav-badge">5</span>
@@ -80,14 +109,14 @@
           <span class="nav-tooltip">Website Content</span>
         </div>
         <div class="nav-subnav" id="websiteContent">
-          <a href="content/hero.html"          class="nav-sub-item"><span>Hero Section</span></a>
-          <a href="content/about-snippet.html" class="nav-sub-item"><span>About Snippet</span></a>
-          <a href="content/programs.html"      class="nav-sub-item"><span>Programs / Levels</span></a>
-          <a href="content/why-choose-us.html" class="nav-sub-item"><span>Why Choose Us</span></a>
-          <a href="content/gallery.html"       class="nav-sub-item"><span>Gallery</span></a>
-          <a href="content/testimonials.html"  class="nav-sub-item"><span>Testimonials</span></a>
-          <a href="content/stats.html"         class="nav-sub-item"><span>Stats Bar</span></a>
-          <a href="content/footer.html"        class="nav-sub-item"><span>Footer Info</span></a>
+          <a href="{{ route('admin.content.hero') }}" class="nav-sub-item {{ request()->routeIs('admin.content.hero') ? 'active' : '' }}"><span>Hero Section</span></a>
+          <a href="{{ route('admin.content.about') }}" class="nav-sub-item {{ request()->routeIs('admin.content.about') ? 'active' : '' }}"><span>About Snippet</span></a>
+          <a href="{{ route('admin.content.programs') }}" class="nav-sub-item {{ request()->routeIs('admin.content.programs') ? 'active' : '' }}"><span>Programs / Levels</span></a>
+          <a href="{{ route('admin.content.why-choose-us') }}" class="nav-sub-item {{ request()->routeIs('admin.content.why-choose-us') ? 'active' : '' }}"><span>Why Choose Us</span></a>
+          <a href="{{ route('admin.content.gallery') }}" class="nav-sub-item {{ request()->routeIs('admin.content.gallery') ? 'active' : '' }}"><span>Gallery</span></a>
+          <a href="{{ route('admin.content.testimonials') }}" class="nav-sub-item {{ request()->routeIs('admin.content.testimonials') ? 'active' : '' }}"><span>Testimonials</span></a>
+          <a href="{{ route('admin.content.stats') }}" class="nav-sub-item {{ request()->routeIs('admin.content.stats') ? 'active' : '' }}"><span>Stats Bar</span></a>
+          <a href="{{ route('admin.content.footer') }}" class="nav-sub-item {{ request()->routeIs('admin.content.footer') ? 'active' : '' }}"><span>Footer Info</span></a>
         </div>
       </div>
 
@@ -100,8 +129,8 @@
           <span class="nav-tooltip">Events</span>
         </div>
         <div class="nav-subnav" id="eventsNav">
-          <a href="events/index.html"  class="nav-sub-item"><span>All Events</span></a>
-          <a href="events/editor.html" class="nav-sub-item"><span>New Event</span></a>
+          <a href="{{ route('admin.events.index') }}" class="nav-sub-item {{ request()->routeIs('admin.events.index') ? 'active' : '' }}"><span>All Events</span></a>
+          <a href="{{ route('admin.events.create') }}" class="nav-sub-item {{ request()->routeIs('admin.events.create') ? 'active' : '' }}"><span>New Event</span></a>
         </div>
       </div>
 
@@ -114,13 +143,13 @@
           <span class="nav-tooltip">Blog / News</span>
         </div>
         <div class="nav-subnav" id="blogNav">
-          <a href="blog/index.html"       class="nav-sub-item"><span>All Posts</span></a>
-          <a href="blog/editor.html"      class="nav-sub-item"><span>New Post</span></a>
-          <a href="blog/categories.html"  class="nav-sub-item"><span>Categories</span></a>
+          <a href="{{ route('admin.blog.index') }}" class="nav-sub-item {{ request()->routeIs('admin.blog.index') ? 'active' : '' }}"><span>All Posts</span></a>
+          <a href="{{ route('admin.blog.create') }}" class="nav-sub-item {{ request()->routeIs('admin.blog.create') ? 'active' : '' }}"><span>New Post</span></a>
+          <a href="{{ route('admin.blog.categories') }}" class="nav-sub-item {{ request()->routeIs('admin.blog.categories') ? 'active' : '' }}"><span>Categories</span></a>
         </div>
       </div>
 
-      <a href="content/gallery.html" class="nav-item">
+      <a href="{{ route('admin.media.index') }}" class="nav-item {{ request()->routeIs('admin.media.*') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-images"></i></span>
         <span class="nav-item-text">Media Library</span>
         <span class="nav-tooltip">Media Library</span>
@@ -128,17 +157,17 @@
 
       <!-- Settings -->
       <div class="sidebar-section">Settings</div>
-      <a href="settings/general.html" class="nav-item">
+      <a href="{{ route('admin.settings.general') }}" class="nav-item {{ request()->routeIs('admin.settings.general') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-gear"></i></span>
         <span class="nav-item-text">School Settings</span>
         <span class="nav-tooltip">School Settings</span>
       </a>
-      <a href="settings/accounts.html" class="nav-item">
+      <a href="{{ route('admin.settings.accounts') }}" class="nav-item {{ request()->routeIs('admin.settings.accounts') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-users-gear"></i></span>
         <span class="nav-item-text">Admin Accounts</span>
         <span class="nav-tooltip">Admin Accounts</span>
       </a>
-      <a href="settings/admissions.html" class="nav-item">
+      <a href="{{ route('admin.settings.security') }}" class="nav-item {{ request()->routeIs('admin.settings.security') ? 'active' : '' }}">
         <span class="nav-item-icon"><i class="fas fa-shield-halved"></i></span>
         <span class="nav-item-text">Security</span>
         <span class="nav-tooltip">Security</span>
@@ -154,9 +183,12 @@
           <div class="sidebar-user-name">Mrs. M. Adeyemi</div>
           <div class="sidebar-user-role">Super Administrator</div>
         </div>
-        <a href="auth/login.html" class="sidebar-logout" title="Logout">
-          <i class="fas fa-right-from-bracket"></i>
-        </a>
+        <form method="POST" action="{{ route('admin.logout') }}" class="sidebar-logout-form">
+          @csrf
+          <button type="submit" class="sidebar-logout" title="Logout">
+            <i class="fas fa-right-from-bracket"></i>
+          </button>
+        </form>
       </div>
     </div>
   </aside>
@@ -257,18 +289,19 @@
               <div class="user-dropdown-name">Mrs. M. Adeyemi</div>
               <div class="user-dropdown-email">m.adeyemi@royalark.edu.ng</div>
             </div>
-            <a href="settings/accounts.html" class="dropdown-item">
+            <a href="{{ route('admin.settings.accounts') }}" class="dropdown-item">
               <i class="fas fa-user-circle"></i> My Profile
             </a>
-            <a href="settings/general.html" class="dropdown-item">
+            <a href="{{ route('admin.settings.general') }}" class="dropdown-item">
               <i class="fas fa-gear"></i> Settings
             </a>
-            <a href="settings/accounts.html" class="dropdown-item">
+            <a href="{{ route('admin.settings.accounts') }}" class="dropdown-item">
               <i class="fas fa-lock"></i> Change Password
             </a>
-            <a href="auth/login.html" class="dropdown-item danger">
+            <form method="POST" action="{{ route('admin.logout') }}" class="dropdown-item danger" onclick="event.preventDefault(); this.closest('form').submit();" style="cursor: pointer;">
+              @csrf
               <i class="fas fa-right-from-bracket"></i> Sign Out
-            </a>
+            </form>
           </div>
         </div>
 

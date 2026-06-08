@@ -163,6 +163,7 @@ h1,h2,h3,h4,h5,h6 { font-family:var(--font-ui); line-height:1.25; }
 .notice-bar.info    { background: #1A5C99; color: #fff; }
 .notice-bar.warning { background: var(--amber); color: #fff; }
 .notice-bar.alert   { background: #B52B2B; color: #fff; }
+.notice-bar.success { background: var(--s-open); color: #fff; }
 .notice-bar-text  { flex: 1; }
 .notice-bar-action {
   font-weight: 700;
@@ -1828,11 +1829,11 @@ input.row-check { accent-color: var(--amber); width: 15px; height: 15px; cursor:
 ══════════════════════════════════════════════════════════ */
 .toast-stack {
   position: fixed;
-  bottom: 24px;
+  top: 24px;
   right: 24px;
   z-index: 9999;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   gap: 8px;
   max-width: 380px;
   pointer-events: none;
@@ -3105,7 +3106,7 @@ input.row-check { accent-color: var(--amber); width: 15px; height: 15px; cursor:
   .page-header-actions { width: 100%; }
   .page-header-actions .btn { flex: 1; justify-content: center; }
   .lightbox-panel { display: none; }
-  .toast-stack { right: 12px; bottom: 12px; max-width: calc(100vw - 24px); }
+  .toast-stack { right: 12px; top: 12px; max-width: calc(100vw - 24px); }
 }
 
 @media (max-width: 480px) {
@@ -3116,4 +3117,13 @@ input.row-check { accent-color: var(--amber); width: 15px; height: 15px; cursor:
   .modal-backdrop { padding: 0; align-items: flex-end; }
   .modal { border-radius: var(--r-xl) var(--r-xl) 0 0; max-height: 92dvh; }
   .scroll-top-btn { bottom: 16px; right: 16px; }
+}
+
+/* Sidebar logout form */
+.sidebar-logout-form {
+  display: contents;
+}
+.sidebar-logout-form .sidebar-logout {
+  background: none;
+  border: none;
 }
